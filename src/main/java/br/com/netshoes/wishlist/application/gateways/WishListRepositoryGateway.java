@@ -13,6 +13,6 @@ public interface WishListRepositoryGateway {
 
     WishProduct getWishProductByUserIdAndProductId(String userId, String productId);
 
-    List<WishProduct> getWishListByUserID(String userId);
+    List<WishProduct> getWishListByUserId(String userId);
 
 }

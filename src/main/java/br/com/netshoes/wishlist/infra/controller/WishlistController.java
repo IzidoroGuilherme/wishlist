@@ -1,22 +1,24 @@
 package br.com.netshoes.wishlist.infra.controller;
 
 import br.com.netshoes.wishlist.application.usecases.wish.CreateWishProductUseCase;
+import br.com.netshoes.wishlist.application.usecases.wish.GetUserWishListUseCase;
 import br.com.netshoes.wishlist.domain.entities.wish.WishProduct;
 import br.com.netshoes.wishlist.infra.controller.dto.WishProductDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/wish")
 public class WishlistController {
     private final CreateWishProductUseCase createWishProductUseCase;
+    private final GetUserWishListUseCase getUserWishListUseCase;
 
-    public WishlistController(CreateWishProductUseCase createWishProductUseCase) {
+    public WishlistController(CreateWishProductUseCase createWishProductUseCase, GetUserWishListUseCase getUserWishListUseCase) {
         this.createWishProductUseCase = createWishProductUseCase;
+        this.getUserWishListUseCase = getUserWishListUseCase;
     }
 
     @PostMapping
@@ -28,6 +30,12 @@ public class WishlistController {
 
         return ResponseEntity.created(uri).body(new WishProductDto(wishProduct.getProductId(),
                 wishProduct.getUserId(), wishProduct.getProductQuantity()));
+    }
+
+    @GetMapping("{userId}")
+    public List<WishProductDto> getUserWishList(@PathVariable String userId){
+        return getUserWishListUseCase.getUserWishlist(userId).stream().map(wishProduct -> new WishProductDto(wishProduct.getProductId(),
+                wishProduct.getUserId(), wishProduct.getProductQuantity())).toList();
     }
 
 }

@@ -34,12 +34,14 @@ public class MongoDBWishlistRepository implements WishListRepositoryGateway {
     }
 
     @Override
+    public List<WishProduct> getWishListByUserId(String userId) {
+        return repository.findAllByUserId(userId).stream().map(wishProductMapper::toDomain).toList();
+    }
+
+    @Override
     public WishProduct getWishProductByUserIdAndProductId(String userId, String productId) {
         return null;
     }
 
-    @Override
-    public List<WishProduct> getWishListByUserID(String userId) {
-        return null;
-    }
+
 }
