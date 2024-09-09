@@ -24,7 +24,7 @@ class CreateWishProductUseCaseTest {
     WishListRepositoryGateway wishListRepository;
 
     @Test
-    void Should_ReturnWishProduct_When_Sucess(){
+    void Should_ReturnWishProduct_When_Success(){
         WishProduct wishProduct = new WishProduct("123", "userID", 2);
         when(wishListRepository.existsWishProduct(anyString(),anyString())).thenReturn(false);
         when(wishListRepository.wishListSizeByUserId(anyString())).thenReturn(10L);
