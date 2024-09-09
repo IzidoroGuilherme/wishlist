@@ -12,7 +12,7 @@ public class GetUserWishListUseCase {
         this.wishListRepository = wishListRepository;
     }
 
-    public List<WishProduct> getUserWishlist(String userId){
+    public List<WishProduct> getUserWishlist(String userId) {
         return wishListRepository.getWishListByUserId(userId);
     }
 }

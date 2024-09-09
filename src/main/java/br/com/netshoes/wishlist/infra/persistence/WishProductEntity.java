@@ -21,7 +21,8 @@ public class WishProductEntity {
 
     public WishProductEntity() {}
 
-    public WishProductEntity(String productId, String userId, Integer productQuantity) {
+    public WishProductEntity(String wishProductId, String productId, String userId, Integer productQuantity) {
+        this.wishProductId = wishProductId;
         this.productId = productId;
         this.userId = userId;
         this.productQuantity = productQuantity;

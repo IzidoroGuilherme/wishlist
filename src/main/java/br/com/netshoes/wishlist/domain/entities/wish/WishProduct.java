@@ -4,6 +4,7 @@ import br.com.netshoes.wishlist.domain.exceptions.WishProductCreateException;
 
 public class WishProduct {
 
+    private String wishProductId;
     private String productId;
 
     private String userId;
@@ -13,7 +14,6 @@ public class WishProduct {
         if (isBlankOrNullString(productId) || isBlankOrNullString(userId) || productQuantity == null){
             throw new WishProductCreateException("Um dos dados obrigatórios não foram passado: [productId, userId e productQuantity]");
         }
-
         this.productId = productId;
         this.userId = userId;
         this.productQuantity = productQuantity;
@@ -21,6 +21,10 @@ public class WishProduct {
 
     private boolean isBlankOrNullString(String string){
         return string == null || string.isBlank();
+    }
+
+    public String getWishProductId() {
+        return wishProductId;
     }
 
     public String getProductId() {
@@ -35,4 +39,7 @@ public class WishProduct {
         return productQuantity;
     }
 
+    public void setWishProductId(String wishProductId) {
+        this.wishProductId = wishProductId;
+    }
 }

@@ -15,4 +15,6 @@ public interface WishListRepositoryGateway {
 
     List<WishProduct> getWishListByUserId(String userId);
 
+    void deleteWishProduct(WishProduct wishProduct);
+
 }

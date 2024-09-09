@@ -13,12 +13,12 @@ public class CreateWishProductUseCase {
         this.wishListRepository = wishListRepository;
     }
 
-    public WishProduct saveWishProduct(WishProduct wishProduct){
-        if (wishListRepository.existsWishProduct(wishProduct.getUserId(), wishProduct.getProductId())){
+    public WishProduct saveWishProduct(WishProduct wishProduct) {
+        if (wishListRepository.existsWishProduct(wishProduct.getUserId(), wishProduct.getProductId())) {
             throw new WishProductCreateException("Este produto já se encontra na sua lista de desejos");
         }
 
-        if (wishListRepository.wishListSizeByUserId(wishProduct.getUserId()) >= WISH_LIST_LIMIT_SIZE){
+        if (wishListRepository.wishListSizeByUserId(wishProduct.getUserId()) >= WISH_LIST_LIMIT_SIZE) {
             throw new WishListFullException("Sua lista de desejo está cheia");
         }
 

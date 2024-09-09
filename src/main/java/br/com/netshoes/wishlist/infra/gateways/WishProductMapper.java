@@ -5,11 +5,13 @@ import br.com.netshoes.wishlist.infra.persistence.WishProductEntity;
 
 public class WishProductMapper {
     public WishProductEntity toEntity(WishProduct wishProduct) {
-        return new WishProductEntity(wishProduct.getProductId(), wishProduct.getUserId(),
+        return new WishProductEntity(wishProduct.getWishProductId(),wishProduct.getProductId(), wishProduct.getUserId(),
                 wishProduct.getProductQuantity());
     }
 
     public WishProduct toDomain(WishProductEntity wishProductEntity){
-        return new WishProduct(wishProductEntity.getProductId(), wishProductEntity.getUserId(), wishProductEntity.getProductQuantity());
+        WishProduct wishProduct = new WishProduct(wishProductEntity.getProductId(), wishProductEntity.getUserId(), wishProductEntity.getProductQuantity());
+        wishProduct.setWishProductId(wishProductEntity.getWishProductId());
+        return wishProduct;
     }
 }

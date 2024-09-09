@@ -40,7 +40,13 @@ public class MongoDBWishlistRepository implements WishListRepositoryGateway {
 
     @Override
     public WishProduct getWishProductByUserIdAndProductId(String userId, String productId) {
-        return null;
+        return repository.findByUserIdAndProductId(userId, productId);
+    }
+
+    @Override
+    public void deleteWishProduct(WishProduct wishProduct){
+        WishProductEntity wishProductEntity = wishProductMapper.toEntity(wishProduct);
+        repository.delete(wishProductEntity);
     }
 
 
