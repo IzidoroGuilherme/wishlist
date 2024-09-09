@@ -9,10 +9,10 @@ class WishProductTest {
     @Test
     void Should_ThrowException_When_ProductIdIsNullOrBlank() {
         Assertions.assertThrows(WishProductCreateException.class,
-                () -> new WishProduct(null, "111", 2));
+                () -> new WishProduct(null, "111", 2), "Um dos dados obrigatórios não foram passado: [productId, userId e productQuantity]");
 
         Assertions.assertThrows(WishProductCreateException.class,
-                () -> new WishProduct("", "111", 2));
+                () -> new WishProduct("", "111", 2), "Um dos dados obrigatórios não foram passado: [productId, userId e productQuantity]");
     }
 
 }
