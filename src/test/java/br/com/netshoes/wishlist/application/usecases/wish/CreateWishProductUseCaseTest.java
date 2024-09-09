@@ -24,7 +24,7 @@ class CreateWishProductUseCaseTest {
     WishListRepositoryGateway wishListRepository;
 
     @Test
-    void Should_ReturnWishProduct_When_Success(){
+    void should_ReturnWishProduct_When_Success(){
         WishProduct wishProduct = new WishProduct("123", "userID", 2);
         when(wishListRepository.existsWishProduct(anyString(),anyString())).thenReturn(false);
         when(wishListRepository.wishListSizeByUserId(anyString())).thenReturn(10L);
@@ -35,7 +35,7 @@ class CreateWishProductUseCaseTest {
     }
 
     @Test
-    void Should_ThrowException_When_ExistsWishProductTrue(){
+    void should_ThrowException_When_ExistsWishProductTrue(){
         WishProduct wishProduct = new WishProduct("123", "userID", 2);
         when(wishListRepository.existsWishProduct(anyString(),anyString())).thenReturn(true);
 
@@ -43,7 +43,7 @@ class CreateWishProductUseCaseTest {
     }
 
     @Test
-    void Should_ThrowException_When_UserWishListIsEquals25(){
+    void should_ThrowException_When_UserWishListIsEquals25(){
         WishProduct wishProduct = new WishProduct("123", "userID", 2);
         when(wishListRepository.existsWishProduct(anyString(),anyString())).thenReturn(false);
         when(wishListRepository.wishListSizeByUserId(anyString())).thenReturn(20L);

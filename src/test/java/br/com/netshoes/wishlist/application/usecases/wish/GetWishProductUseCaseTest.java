@@ -23,7 +23,7 @@ class GetWishProductUseCaseTest {
     WishListRepositoryGateway wishListRepository;
 
     @Test
-    void Should_ReturnWishProduct_When_FindWishProduct(){
+    void should_ReturnWishProduct_When_FindWishProduct(){
         WishProduct wishProduct = new WishProduct("123", "userID", 2);
         when(wishListRepository.getWishProductByUserIdAndProductId(anyString(),anyString())).thenReturn(wishProduct);
 
@@ -32,7 +32,7 @@ class GetWishProductUseCaseTest {
     }
 
     @Test
-    void Should_ThrowException_When_DoesNotFindWishProduct(){
+    void should_ThrowException_When_DoesNotFindWishProduct(){
         when(wishListRepository.getWishProductByUserIdAndProductId(anyString(),anyString())).thenReturn(null);
         assertThrows(NotFoundException.class, () -> getWishProductUseCase.getWishProductByUserIdAndProductId("150", "userID"),
                 "Produto não se encontra na lista de desejos");

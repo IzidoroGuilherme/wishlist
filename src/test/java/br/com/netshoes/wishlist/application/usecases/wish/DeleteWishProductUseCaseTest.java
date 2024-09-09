@@ -25,7 +25,7 @@ class DeleteWishProductUseCaseTest {
     GetWishProductUseCase getWishProductUseCase;
 
     @Test
-    void Should_CallDeleteWishProduct_When_FindWishProduct(){
+    void should_CallDeleteWishProduct_When_FindWishProduct(){
         WishProduct wishProduct = new WishProduct("123", "userID", 2);
         wishProduct.setWishProductId("123");
         when(getWishProductUseCase.getWishProductByUserIdAndProductId(anyString(),anyString())).thenReturn(wishProduct);
@@ -35,7 +35,7 @@ class DeleteWishProductUseCaseTest {
     }
 
     @Test
-    void Should_NotCallCallDeleteWishProductAndThrowError_When_DoesNotFindWishProduct(){
+    void should_NotCallCallDeleteWishProductAndThrowError_When_DoesNotFindWishProduct(){
         WishProduct wishProduct = new WishProduct("123", "userID", 2);
         wishProduct.setWishProductId("123");
         when(getWishProductUseCase.getWishProductByUserIdAndProductId(anyString(),anyString())).thenThrow(NotFoundException.class);

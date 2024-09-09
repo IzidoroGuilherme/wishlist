@@ -25,7 +25,7 @@ class GetUserWishListUseCaseTest {
     WishListRepositoryGateway wishListRepositoryGateway;
 
     @Test
-    void Should_ReturnUserWishList_When_HasData(){
+    void should_ReturnUserWishList_When_HasData(){
         List<WishProduct> wishList = List.of(new WishProduct("123", "userID", 1),
                 new WishProduct("124", "userID", 1),
                 new WishProduct("125", "userID", 10));
@@ -37,7 +37,7 @@ class GetUserWishListUseCaseTest {
     }
 
     @Test
-    void Should_ReturnEmptyList_When_UserDoesNotHaveWishList(){
+    void should_ReturnEmptyList_When_UserDoesNotHaveWishList(){
         List<WishProduct> wishList = new ArrayList<>();
         when(wishListRepositoryGateway.getWishListByUserId(anyString())).thenReturn(wishList);
 
