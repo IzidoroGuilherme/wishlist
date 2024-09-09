@@ -7,7 +7,7 @@ import br.com.netshoes.wishlist.domain.exceptions.WishProductCreateException;
 
 public class CreateWishProductUseCase {
     private final WishListRepositoryGateway wishListRepository;
-    private static final int WISH_LIST_LIMIT_SIZE = 25;
+    private static final int WISH_LIST_LIMIT_SIZE = 20;
 
     public CreateWishProductUseCase(WishListRepositoryGateway wishListRepository) {
         this.wishListRepository = wishListRepository;
